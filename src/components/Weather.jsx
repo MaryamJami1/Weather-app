@@ -9,11 +9,13 @@ const Weather = () => {
   let getCityName = async () => {
     let cityName = inputRef.current.value;
     console.log("City Name:", cityName);
+    const apiKey = import.meta.env.VITE_WEATHER_API_KEY;
+
 
     try {
       let res = await axios.get(
-        `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=4836e314d017e8585055fbad099cb68e&units=metric`
-      );
+        `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=metric`
+    );
       console.log("API Response:", res.data);
 
       setweatherData(res.data);
